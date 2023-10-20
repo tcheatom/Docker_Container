@@ -1,5 +1,5 @@
 # Define your base image which is Node JS
-FROM node:19-alpine
+FROM node:19
 
 # Copy package.json, wildcard used so both package.json AND package-lock.json are copied
 # slash '/' at the end of app is important, so it created an app directory, otherwise you'll get an error
