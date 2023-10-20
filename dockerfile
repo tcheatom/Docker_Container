@@ -1,18 +1,17 @@
-# Define your base image which is Node JS
-FROM node:19
+FROM node:19-alpine
 
 # Copy package.json, wildcard used so both package.json AND package-lock.json are copied
 # slash '/' at the end of app is important, so it created an app directory, otherwise you'll get an error
-COPY package.json /app/
+COPY package*.json /usr/app/
 
 # Copy app files from src directory
-COPY src /app/
+COPY src /usr/app/
 
 # Create app directory & set default dir so that next commands executes in /usr/app dir, liked cd-ing into /usr/app to execute npm install
-WORKDIR /app
+WORKDIR /usr/app
 
 # Install app dependencies
 RUN npm install
 
-# Start the application (CDM is the last command in the docker file)
+# Start the application
 CMD ["node", "server.js"]
